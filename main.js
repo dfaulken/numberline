@@ -35,8 +35,8 @@ function drawNumberline(){
 
   // draw the minimum hours circle
   var minPixels = placeHours(hours.min, lowest, highest, lineStart.x, lineEnd.x);
-  //var minCircle = paper.circle(minPixels, circleY, circleRadius);
-  var minCircle = paper.rect(minPixels - 37.5, circleY - 50, 75, 100);
+  var minCircle = paper.circle(minPixels, circleY, circleRadius);
+  //var minCircle = paper.rect(minPixels - 37.5, circleY - 50, 75, 100);
   minCircle.attr({ fill: colors.min, 'stroke-width': 2 });
   paper.text(minPixels, textY, hours.min).attr('font-size', hoursFontSize);
   paper.text(minPixels, descY, 'Minimum')
@@ -44,7 +44,7 @@ function drawNumberline(){
 
   // draw the desired hours circle
   var desiredPixels = placeHours(hours.desired, lowest, highest, lineStart.x, lineEnd.x);
-  var desiredCircle = paper.circle(desiredPixels, circleY, circleRadius - 10);
+  var desiredCircle = paper.circle(desiredPixels, circleY, circleRadius);
   desiredCircle.attr({ fill: colors.desired, 'stroke-width': 2 });
   paper.text(desiredPixels, textY, hours.desired).attr('font-size', hoursFontSize);
   paper.text(desiredPixels, descY, 'Desired')
@@ -52,8 +52,8 @@ function drawNumberline(){
 
   // draw the max hours circle
   var maxPixels = placeHours(hours.max, lowest, highest, lineStart.x, lineEnd.x);
-  //var maxCircle = paper.circle(maxPixels, circleY, circleRadius);
-  var maxCircle = paper.rect(maxPixels - 37.5, circleY - 50, 75, 100);
+  var maxCircle = paper.circle(maxPixels, circleY, circleRadius);
+  //var maxCircle = paper.rect(maxPixels - 37.5, circleY - 50, 75, 100);
   maxCircle.attr({ fill: colors.max, 'stroke-width': 2 });
   paper.text(maxPixels, textY, hours.max).attr('font-size', hoursFontSize);
   paper.text(maxPixels, descY, 'Maximum')
@@ -61,13 +61,13 @@ function drawNumberline(){
 
   // draw the assigned hours circle last, since it's the only one that moves
   var assignedPixels = placeHours(hours.assigned, lowest, highest, lineStart.x, lineEnd.x);
-  var assignedCircle = paper.circle(assignedPixels, circleY, circleRadius);
+  var assignedCircle = paper.circle(assignedPixels, circleY, circleRadius - 10);
   assignedCircle.attr({ fill: colors.assigned, 'stroke-width': 2 });
   paper.text(assignedPixels, textY + 2, hours.assigned)
-       .attr('font-size', hoursFontSize + 2);
+       .attr('font-size', hoursFontSize - 2);
        //.attr('font-weight', 'bold');
   paper.text(assignedPixels, descY + 2, 'Assigned')
-       .attr('font-size', descriptionFontSize + 2);
+       .attr('font-size', descriptionFontSize);
        //.attr('font-weight', 'bold');
 }
 
