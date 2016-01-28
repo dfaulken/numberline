@@ -30,15 +30,16 @@ function drawNumberline(){
   line.attr('stroke-width', '3');
 
   var circleY = lineStart.y;
-  var textY = circleY - 8;
-  var descY = textY + hoursFontSize;
+  var textY = circleY - 1.5;
+  var descY = textY - hoursFontSize - 50;
 
   // draw the minimum hours circle
   var minPixels = placeHours(hours.min, lowest, highest, lineStart.x, lineEnd.x);
   var minCircle = paper.circle(minPixels, circleY, circleRadius);
+  //var minCircle = paper.rect(minPixels - 37.5, circleY - 50, 75, 100);
   minCircle.attr({ fill: colors.min, 'stroke-width': 2 });
   paper.text(minPixels, textY, hours.min).attr('font-size', hoursFontSize);
-  paper.text(minPixels, descY, 'minimum')
+  paper.text(minPixels, descY, 'Minimum')
        .attr('font-size', descriptionFontSize);
 
   // draw the desired hours circle
@@ -46,24 +47,28 @@ function drawNumberline(){
   var desiredCircle = paper.circle(desiredPixels, circleY, circleRadius);
   desiredCircle.attr({ fill: colors.desired, 'stroke-width': 2 });
   paper.text(desiredPixels, textY, hours.desired).attr('font-size', hoursFontSize);
-  paper.text(desiredPixels, descY, 'desired')
+  paper.text(desiredPixels, descY, 'Desired')
        .attr('font-size', descriptionFontSize);
 
   // draw the max hours circle
   var maxPixels = placeHours(hours.max, lowest, highest, lineStart.x, lineEnd.x);
   var maxCircle = paper.circle(maxPixels, circleY, circleRadius);
+  //var maxCircle = paper.rect(maxPixels - 37.5, circleY - 50, 75, 100);
   maxCircle.attr({ fill: colors.max, 'stroke-width': 2 });
   paper.text(maxPixels, textY, hours.max).attr('font-size', hoursFontSize);
-  paper.text(maxPixels, descY, 'maximum')
+  paper.text(maxPixels, descY, 'Maximum')
        .attr('font-size', descriptionFontSize);
 
   // draw the assigned hours circle last, since it's the only one that moves
   var assignedPixels = placeHours(hours.assigned, lowest, highest, lineStart.x, lineEnd.x);
   var assignedCircle = paper.circle(assignedPixels, circleY, circleRadius - 10);
   assignedCircle.attr({ fill: colors.assigned, 'stroke-width': 2 });
-  paper.text(assignedPixels, textY + 2, hours.assigned).attr('font-size', hoursFontSize - 5);
-  paper.text(assignedPixels, descY - 2, 'assigned')
-       .attr('font-size', descriptionFontSize - 3);
+  paper.text(assignedPixels, textY + 2, hours.assigned)
+       .attr('font-size', hoursFontSize - 2);
+       //.attr('font-weight', 'bold');
+  paper.text(assignedPixels, descY + 2, 'Assigned')
+       .attr('font-size', descriptionFontSize);
+       //.attr('font-weight', 'bold');
 }
 
 function placeHours(hours, minHours, maxHours, lineStartX, lineEndX){
@@ -74,5 +79,9 @@ function placeHours(hours, minHours, maxHours, lineStartX, lineEndX){
 $(document).ready(function(){
   drawNumberline();
 
+  $('input.hours_input').on('change', function(){
+    var val = +$(this).val();
+    $(this).val(val.toFixed(2));
+  });
   $('#form').on('change', 'input', drawNumberline);
 })
