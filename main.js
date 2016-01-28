@@ -33,7 +33,7 @@ function drawNumberline(){
   // draw the minimum hours circle
   var minPixels = placeHours(hours.min, lowest, highest, lineStart.x, lineEnd.x);
   var minCircle = paper.circle(minPixels, lineStart.y, circleRadius);
-  minCircle.attr({ fill: colors.min });
+  minCircle.attr({ fill: colors.min, 'stroke-width': 2 });
   paper.text(minPixels, lineStart.y, hours.min).attr('font-size', hoursFontSize);
   paper.text(minPixels, lineStart.y + hoursFontSize, 'min')
        .attr('font-size', descriptionFontSize);
@@ -41,7 +41,7 @@ function drawNumberline(){
   // draw the desired hours circle
   var desiredPixels = placeHours(hours.desired, lowest, highest, lineStart.x, lineEnd.x);
   var desiredCircle = paper.circle(desiredPixels, lineStart.y, circleRadius);
-  desiredCircle.attr({ fill: colors.desired });
+  desiredCircle.attr({ fill: colors.desired, 'stroke-width': 2 });
   paper.text(desiredPixels, lineStart.y, hours.desired).attr('font-size', hoursFontSize);
   paper.text(desiredPixels, lineStart.y + hoursFontSize, 'desired')
        .attr('font-size', descriptionFontSize);
@@ -49,7 +49,7 @@ function drawNumberline(){
   // draw the assigned hours circle
   var assignedPixels = placeHours(hours.assigned, lowest, highest, lineStart.x, lineEnd.x);
   var assignedCircle = paper.circle(assignedPixels, lineStart.y, circleRadius);
-  assignedCircle.attr({ fill: colors.assigned });
+  assignedCircle.attr({ fill: colors.assigned, 'stroke-width': 2 });
   paper.text(assignedPixels, lineStart.y, hours.assigned).attr('font-size', hoursFontSize);
   paper.text(assignedPixels, lineStart.y + hoursFontSize, 'assigned')
        .attr('font-size', descriptionFontSize);
@@ -57,7 +57,7 @@ function drawNumberline(){
   // draw the max hours circle
   var maxPixels = placeHours(hours.max, lowest, highest, lineStart.x, lineEnd.x);
   var maxCircle = paper.circle(maxPixels, lineStart.y, circleRadius);
-  maxCircle.attr({ fill: colors.max });
+  maxCircle.attr({ fill: colors.max, 'stroke-width': 2 });
   paper.text(maxPixels, lineStart.y, hours.max).attr('font-size', hoursFontSize);
   paper.text(maxPixels, lineStart.y + hoursFontSize, 'max')
        .attr('font-size', descriptionFontSize);
