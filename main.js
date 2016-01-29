@@ -66,7 +66,7 @@ function drawNumberline(){
   paper.text(assignedPixels, textY + 2, hours.assigned)
        .attr('font-size', hoursFontSize - 2);
        //.attr('font-weight', 'bold');
-  paper.text(assignedPixels, descY + 2, 'Assigned')
+  paper.text(assignedPixels, circleY - circleRadius - descriptionFontSize, 'Assigned')
        .attr('font-size', descriptionFontSize);
        //.attr('font-weight', 'bold');
 }
